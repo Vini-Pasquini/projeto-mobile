@@ -5,6 +5,8 @@ public class PlayerController : MonoBehaviour
     public MovementJoystick joystick;
 
     [SerializeField] private float speed = 5f;
+    private Vector2 moveDirection;
+
     private Rigidbody2D rb;
 
     void Start()
@@ -21,5 +23,10 @@ public class PlayerController : MonoBehaviour
         {
             rb.linearVelocity = Vector2.zero;
         }
+
+        moveDirection = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+
+        if (moveDirection != Vector2.zero)
+            rb.linearVelocity = moveDirection * speed;
     }
 }
