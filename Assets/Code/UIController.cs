@@ -1,4 +1,3 @@
-using NUnit.Framework.Internal;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -12,7 +11,7 @@ public class UIController : MonoBehaviour
 
     private List<IDraggable> _draggableCards = new List<IDraggable>();
 
-    private bool _isDraggingCard = false;
+    private int _currentDraggedCardIndex = -1;
     private int _currentCardDragFingerID = -1;
 
     private void Update()
@@ -72,7 +71,7 @@ public class UIController : MonoBehaviour
 
     private void TryDragStart(int touchIndex)
     {
-        if (this._isDraggingCard) return;
+        if (this._currentDraggedCardIndex >= 0) return;
 
         PointerEventData eventData = new PointerEventData(EventSystem.current);
         eventData.position = Input.touches[touchIndex].position;
@@ -82,11 +81,11 @@ public class UIController : MonoBehaviour
 
         if (results.Where(r => r.gameObject.layer == 5).Count() <= 0) return;
 
-        for (int i = 0; i < this._draggableCards.Count; i++)
+        for (int draggedCardIndex = 0; draggedCardIndex < this._draggableCards.Count; draggedCardIndex++)
         {
-            if (results[0].gameObject != (this._draggableCards[i] as Card).CardObject) continue;
-            this._draggableCards[i].OnDragStart();
-            this._isDraggingCard = true;
+            if (results[0].gameObject != (this._draggableCards[draggedCardIndex] as Card).CardObject) continue;
+            this._draggableCards[draggedCardIndex].OnDragStart();
+            this._currentDraggedCardIndex = draggedCardIndex;
             this._currentCardDragFingerID = Input.touches[touchIndex].fingerId;
             break;
         }
@@ -94,22 +93,40 @@ public class UIController : MonoBehaviour
 
     private void UpdateCardDrag(int touchIndex)
     {
-        if (!this._isDraggingCard || Input.touches[touchIndex].fingerId != this._currentCardDragFingerID) return;
+        if (this._currentDraggedCardIndex < 0 || Input.touches[touchIndex].fingerId != this._currentCardDragFingerID) return;
 
         PointerEventData eventData = new PointerEventData(EventSystem.current);
         eventData.position = Input.touches[touchIndex].position;
-        // TODO: dar um jeito de tirar esse loop
-        for (int i = 0; i < this._draggableCards.Count; i++) { this._draggableCards[i].OnDragUpdate(eventData); }
+        this._draggableCards[this._currentDraggedCardIndex].OnDragUpdate(eventData);
     }
 
     private void CheckDragEnd(int touchIndex)
     {
-        if (!this._isDraggingCard || Input.touches[touchIndex].fingerId != this._currentCardDragFingerID) return;
-        
-        // TODO: seria bom tbm tirar esse loop
-        for (int i = 0; i < this._draggableCards.Count; i++) { this._draggableCards[i].OnDragEnd(); }
-        this._isDraggingCard = false;
+        if (this._currentDraggedCardIndex < 0 || Input.touches[touchIndex].fingerId != this._currentCardDragFingerID) return;
+
+        List<RaycastHit2D> results = new List<RaycastHit2D>();
+        Physics2D.GetRayIntersection(Camera.main.ScreenPointToRay(Input.touches[touchIndex].position), float.MaxValue, results);
+
+        // TODO: mudar pra tag depois
+        if (results.Where(hit => hit.rigidbody.gameObject.name.StartsWith("Door")).Count() <= 0)
+        {
+            this._draggableCards[this._currentDraggedCardIndex].OnDragEnd();
+
+            this._currentDraggedCardIndex = -1;
+            this._currentCardDragFingerID = -1;
+            return;
+        }
+
+        // TODO: verificar se porta condiz com letra na carta (precisa implementar isso ainda)
+        Card currentCard = this._draggableCards[this._currentDraggedCardIndex] as Card;
+        this._draggableCards.RemoveAt(this._currentDraggedCardIndex);
+        currentCard.ConsumeCard();
+
+        this.SpawnCard();
+
+        this._currentDraggedCardIndex = -1;
         this._currentCardDragFingerID = -1;
+        return;
     }
 
     private void SpawnCard()

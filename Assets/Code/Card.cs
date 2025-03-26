@@ -17,6 +17,7 @@ public class Card : IDraggable
         this._currentSlot = cardSlot;
         this._cardObject = this._currentSlot.transform.GetChild(0).gameObject;
         this._cardImage = this._cardObject.GetComponent<Image>();
+        this._cardImage.color = new Color(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f)); // ph
 
         this._isDragging = false;
     }
@@ -38,5 +39,11 @@ public class Card : IDraggable
         this._cardObject.transform.position = this._currentSlot.transform.position;
         this._cardImage.raycastTarget = true;
         this._isDragging = false;
+    }
+
+    public void ConsumeCard()
+    {
+        // TODO: fazer uma animacao para destruir a carta
+        GameObject.Destroy(this._currentSlot);
     }
 }
