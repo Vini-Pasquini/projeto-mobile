@@ -12,6 +12,9 @@ public class UIController : MonoBehaviour
 
     private List<IDraggable> _draggableCards = new List<IDraggable>();
 
+    private bool _isDraggingCard = false;
+    private int _currentCardDragFingerID = -1;
+
     private void Update()
     {
         this.TouchHandler();
@@ -34,27 +37,12 @@ public class UIController : MonoBehaviour
 
     private void TouchPhase_Began(int touchIndex)
     {
+        this.TryDragStart(touchIndex);
+
+        // debug
         switch (touchIndex)
         {
-            case 0:
-                PointerEventData eventData = new PointerEventData(EventSystem.current);
-                eventData.position = Input.touches[touchIndex].position;
-
-                List<RaycastResult> results = new List<RaycastResult>();
-                EventSystem.current.RaycastAll(eventData, results);
-
-                if (results.Where(r => r.gameObject.layer == 5).Count() <= 0) break;
-
-                for (int i = 0; i < this._draggableCards.Count; i++)
-                {
-                    if (results[0].gameObject != (this._draggableCards[i] as Card).CardObject) continue;
-                    this._draggableCards[i].OnDragStart();
-                    break;
-                }
-                Debug.Log(results[0].gameObject.name);
-                break;
-
-            case 1:
+            case 4:
                 this.SpawnCard();
                 break;
         }
@@ -62,15 +50,7 @@ public class UIController : MonoBehaviour
 
     private void TouchPhase_Moved(int touchIndex)
     {
-        switch (touchIndex)
-        {
-            case 0:
-                PointerEventData eventData = new PointerEventData(EventSystem.current);
-                eventData.position = Input.touches[touchIndex].position;
-
-                for (int i = 0; i < this._draggableCards.Count; i++) { this._draggableCards[i].OnDragUpdate(eventData); }
-                break;
-        }
+        this.UpdateCardDrag(touchIndex);
     }
 
     private void TouchPhase_Stationary(int touchIndex)
@@ -80,22 +60,56 @@ public class UIController : MonoBehaviour
 
     private void TouchPhase_Ended(int touchIndex)
     {
-        switch (touchIndex)
-        {
-            case 0:
-                for (int i = 0; i < this._draggableCards.Count; i++) { this._draggableCards[i].OnDragEnd(); }
-                break;
-        }
+        this.CheckDragEnd(touchIndex);
     }
 
     private void TouchPhase_Canceled(int touchIndex)
     {
-        switch (touchIndex)
+        this.CheckDragEnd(touchIndex);
+    }
+
+    /* Card Drag and Drop */
+
+    private void TryDragStart(int touchIndex)
+    {
+        if (this._isDraggingCard) return;
+
+        PointerEventData eventData = new PointerEventData(EventSystem.current);
+        eventData.position = Input.touches[touchIndex].position;
+
+        List<RaycastResult> results = new List<RaycastResult>();
+        EventSystem.current.RaycastAll(eventData, results);
+
+        if (results.Where(r => r.gameObject.layer == 5).Count() <= 0) return;
+
+        for (int i = 0; i < this._draggableCards.Count; i++)
         {
-            case 0:
-                for (int i = 0; i < this._draggableCards.Count; i++) { this._draggableCards[i].OnDragEnd(); }
-                break;
+            if (results[0].gameObject != (this._draggableCards[i] as Card).CardObject) continue;
+            this._draggableCards[i].OnDragStart();
+            this._isDraggingCard = true;
+            this._currentCardDragFingerID = Input.touches[touchIndex].fingerId;
+            break;
         }
+    }
+
+    private void UpdateCardDrag(int touchIndex)
+    {
+        if (!this._isDraggingCard || Input.touches[touchIndex].fingerId != this._currentCardDragFingerID) return;
+
+        PointerEventData eventData = new PointerEventData(EventSystem.current);
+        eventData.position = Input.touches[touchIndex].position;
+        // TODO: dar um jeito de tirar esse loop
+        for (int i = 0; i < this._draggableCards.Count; i++) { this._draggableCards[i].OnDragUpdate(eventData); }
+    }
+
+    private void CheckDragEnd(int touchIndex)
+    {
+        if (!this._isDraggingCard || Input.touches[touchIndex].fingerId != this._currentCardDragFingerID) return;
+        
+        // TODO: seria bom tbm tirar esse loop
+        for (int i = 0; i < this._draggableCards.Count; i++) { this._draggableCards[i].OnDragEnd(); }
+        this._isDraggingCard = false;
+        this._currentCardDragFingerID = -1;
     }
 
     private void SpawnCard()
