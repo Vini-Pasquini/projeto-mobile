@@ -1,23 +1,32 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using TMPro;
 
 public class Card : IDraggable
-{ 
+{
+    private LibrasSign _librasSign;
+
     private GameObject _currentSlot;
     private GameObject _cardObject;
-    private Image _cardImage;
+    private Image _cardBackground;
+    private TextMeshProUGUI _cardText;
 
+    public LibrasSign LibrasSign { get { return this._librasSign; } }
     public GameObject CardObject { get { return this._cardObject; } }
 
     private bool _isDragging;
 
-    public Card(GameObject cardSlot)
+    public Card(GameObject cardSlot, LibrasSign librasSign)
     {
+        this._librasSign = librasSign;
+        
         this._currentSlot = cardSlot;
         this._cardObject = this._currentSlot.transform.GetChild(0).gameObject;
-        this._cardImage = this._cardObject.GetComponent<Image>();
-        this._cardImage.color = new Color(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f)); // ph
+        this._cardBackground = this._cardObject.GetComponent<Image>();
+        this._cardText = this._cardObject.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
+
+        this._cardText.text = this._librasSign.SignText;
 
         this._isDragging = false;
     }
@@ -25,7 +34,7 @@ public class Card : IDraggable
     public void OnDragStart()
     {
         this._isDragging = true;
-        this._cardImage.raycastTarget = false;
+        this._cardBackground.raycastTarget = false;
     }
     
     public void OnDragUpdate(PointerEventData eventData)
@@ -37,7 +46,7 @@ public class Card : IDraggable
     public void OnDragEnd()
     {
         this._cardObject.transform.position = this._currentSlot.transform.position;
-        this._cardImage.raycastTarget = true;
+        this._cardBackground.raycastTarget = true;
         this._isDragging = false;
     }
 

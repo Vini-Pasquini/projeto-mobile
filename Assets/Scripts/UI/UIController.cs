@@ -11,13 +11,22 @@ public class UIController : MonoBehaviour
 
     private List<IDraggable> _draggableCards = new List<IDraggable>();
 
+    private const int MAX_HAND_CAPACITY = 8;
+
     private int _currentDraggedCardIndex = -1;
     private int _currentCardDragFingerID = -1;
+
+    private void Start()
+    {
+        for (int i = 0; i < MAX_HAND_CAPACITY; i++) { this.SpawnLibrasCard(); }
+    }
 
     private void Update()
     {
         this.TouchHandler();
     }
+
+    /* Touch Input Stuff */
 
     private void TouchHandler()
     {
@@ -37,14 +46,6 @@ public class UIController : MonoBehaviour
     private void TouchPhase_Began(int touchIndex)
     {
         this.TryDragStart(touchIndex);
-
-        // debug
-        switch (touchIndex)
-        {
-            case 4:
-                this.SpawnCard();
-                break;
-        }
     }
 
     private void TouchPhase_Moved(int touchIndex)
@@ -107,32 +108,46 @@ public class UIController : MonoBehaviour
         List<RaycastHit2D> results = new List<RaycastHit2D>();
         Physics2D.GetRayIntersection(Camera.main.ScreenPointToRay(Input.touches[touchIndex].position), float.MaxValue, results);
 
-        // TODO: mudar pra tag depois
-        if (results.Where(hit => hit.rigidbody.gameObject.name.StartsWith("Door")).Count() <= 0)
+        if (results.Where(hit => hit.rigidbody.gameObject.CompareTag("Door")).Count() <= 0)
         {
             this._draggableCards[this._currentDraggedCardIndex].OnDragEnd();
-
-            this._currentDraggedCardIndex = -1;
-            this._currentCardDragFingerID = -1;
+            this._currentDraggedCardIndex = this._currentCardDragFingerID = -1;
             return;
         }
 
-        // TODO: verificar se porta condiz com letra na carta (precisa implementar isso ainda)
+        DoorController door = results[0].collider.GetComponent<DoorController>();
+        Debug.Assert(door != null, "[!] Missing <DoorController> Component");
+
         Card currentCard = this._draggableCards[this._currentDraggedCardIndex] as Card;
-        this._draggableCards.RemoveAt(this._currentDraggedCardIndex);
-        currentCard.ConsumeCard();
 
-        this.SpawnCard();
+        if (door.CheckLibrasCardMatch(currentCard.LibrasSign))
+        {
+            this._draggableCards.RemoveAt(this._currentDraggedCardIndex);
+            currentCard.ConsumeCard();
+            this.SpawnLibrasCard();
+        }
+        else { this._draggableCards[this._currentDraggedCardIndex].OnDragEnd(); }
 
-        this._currentDraggedCardIndex = -1;
-        this._currentCardDragFingerID = -1;
+        this._currentDraggedCardIndex = this._currentCardDragFingerID = -1;
+
         return;
     }
 
-    private void SpawnCard()
+    /* Outros */
+
+    public void OnResetCardsButtonPress()
+    {
+        for (int i = 0; i < this._draggableCards.Count; i++) { (this._draggableCards[i] as Card).ConsumeCard(); }
+
+        this._draggableCards.Clear();
+        
+        for (int i = 0; i < MAX_HAND_CAPACITY; i++) { this.SpawnLibrasCard(); }
+    }
+
+    private void SpawnLibrasCard()
     {
         GameObject newCardSlot = Instantiate(this._cardSlotPrefab, this._cardSlotPanel);
-        Card newCard = new Card(newCardSlot);
+        Card newCard = new Card(newCardSlot, GameManager.Instance.GetRandomLibrasSign());
         this._draggableCards.Add(newCard);
     }
 }
