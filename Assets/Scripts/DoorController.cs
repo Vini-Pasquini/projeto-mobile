@@ -9,7 +9,7 @@ public class DoorController : MonoBehaviour
     {
         this._librasSignLock = GameManager.Instance.GetRandomLibrasSign();
 
-        this.transform.GetChild(0).GetComponent<TextMeshPro>().text = this._librasSignLock.Text;
+        this.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = this._librasSignLock.SignSprite;
     }
 
     public bool CheckLibrasCardMatch(LibrasSign librasSignKey)

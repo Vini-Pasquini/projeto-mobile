@@ -445,18 +445,6 @@ PrefabInstance:
       value: Door
       objectReference: {fileID: 0}
     - target: {fileID: 6426179048387190313, guid: 5f8ac39fa6bedf6429da35e16ee84d68, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 6426179048387190313, guid: 5f8ac39fa6bedf6429da35e16ee84d68, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 6426179048387190313, guid: 5f8ac39fa6bedf6429da35e16ee84d68, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 6426179048387190313, guid: 5f8ac39fa6bedf6429da35e16ee84d68, type: 3}
       propertyPath: m_LocalPosition.x
       value: -6.14
       objectReference: {fileID: 0}
@@ -499,10 +487,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 1734127034391146152, guid: 5f8ac39fa6bedf6429da35e16ee84d68, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 0}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5f8ac39fa6bedf6429da35e16ee84d68, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

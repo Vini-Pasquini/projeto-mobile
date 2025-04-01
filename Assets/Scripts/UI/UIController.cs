@@ -11,8 +11,15 @@ public class UIController : MonoBehaviour
 
     private List<IDraggable> _draggableCards = new List<IDraggable>();
 
+    private const int MAX_HAND_CAPACITY = 8;
+
     private int _currentDraggedCardIndex = -1;
     private int _currentCardDragFingerID = -1;
+
+    private void Start()
+    {
+        for (int i = 0; i < MAX_HAND_CAPACITY; i++) { this.SpawnLibrasCard(); }
+    }
 
     private void Update()
     {
@@ -134,7 +141,7 @@ public class UIController : MonoBehaviour
 
         this._draggableCards.Clear();
         
-        for (int i = 0; i < 5; i++) { this.SpawnLibrasCard(); }
+        for (int i = 0; i < MAX_HAND_CAPACITY; i++) { this.SpawnLibrasCard(); }
     }
 
     private void SpawnLibrasCard()

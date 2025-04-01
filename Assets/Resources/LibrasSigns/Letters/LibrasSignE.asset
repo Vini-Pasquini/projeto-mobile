@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61cd9b735c9c63948affde81aca0a40d, type: 3}
   m_Name: LibrasSignE
   m_EditorClassIdentifier: 
-  _text: E
-  _sign: {fileID: 0}
+  _signText: E
+  _signSprite: {fileID: 21300000, guid: 116bdd1c8a1c13f4b928628bc5ea4db1, type: 3}

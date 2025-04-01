@@ -26,7 +26,7 @@ public class Card : IDraggable
         this._cardBackground = this._cardObject.GetComponent<Image>();
         this._cardText = this._cardObject.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
 
-        this._cardText.text = this._librasSign.Text;
+        this._cardText.text = this._librasSign.SignText;
 
         this._isDragging = false;
     }

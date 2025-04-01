@@ -3,9 +3,9 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "LibrasSign", menuName = "Scriptable Objects/LibrasSign")]
 public class LibrasSign : ScriptableObject
 {
-    [SerializeField] private string _text;
-    [SerializeField] private Sprite _sign;
+    [SerializeField] private string _signText;
+    [SerializeField] private Sprite _signSprite;
 
-    public string Text { get { return _text; } }
-    public Sprite Sign { get { return _sign; } }
+    public string SignText { get { return _signText; } }
+    public Sprite SignSprite { get { return _signSprite; } }
 }
