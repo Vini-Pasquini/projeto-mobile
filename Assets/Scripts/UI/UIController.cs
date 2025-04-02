@@ -8,6 +8,8 @@ public class UIController : MonoBehaviour
 {
     [SerializeField] private Transform _cardSlotPanel;
     [SerializeField] private GameObject _cardSlotPrefab;
+    [SerializeField] private GameObject gameOverPanel;
+    [SerializeField] private GameObject vignette;
 
     private List<IDraggable> _draggableCards = new List<IDraggable>();
 
@@ -18,6 +20,8 @@ public class UIController : MonoBehaviour
 
     private void Start()
     {
+        vignette.SetActive(true);
+        gameOverPanel.SetActive(false);
         for (int i = 0; i < MAX_HAND_CAPACITY; i++) { this.SpawnLibrasCard(); }
     }
 
@@ -149,5 +153,10 @@ public class UIController : MonoBehaviour
         GameObject newCardSlot = Instantiate(this._cardSlotPrefab, this._cardSlotPanel);
         Card newCard = new Card(newCardSlot, GameManager.Instance.GetRandomLibrasSign());
         this._draggableCards.Add(newCard);
+    }
+
+    public void ActivateGameOver()
+    {
+        gameOverPanel.SetActive(true);
     }
 }

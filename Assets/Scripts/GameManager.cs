@@ -17,4 +17,10 @@ public class GameManager : IPersistentSingleton<GameManager>
     {
         return this._librasLetterSigns[Random.Range(0, this._librasLetterSigns.Length)];
     }
+
+    public void EnterBossRoom()
+    {
+        Debug.Log("Encontrou o Minotauro");
+        GameObject.Find("Canvas").GetComponent<UIController>().ActivateGameOver();
+    }
 }
