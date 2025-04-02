@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class UIController : MonoBehaviour
@@ -29,6 +30,23 @@ public class UIController : MonoBehaviour
     {
         this.TouchHandler();
     }
+
+    // Buttons
+
+    public void PlayGame()
+    {
+        SceneManager.LoadScene("TestChar");
+    }
+
+    public void TestCards()
+    {
+        SceneManager.LoadScene("TestFullUI");
+    }
+    public void BackToMenu()
+    {
+        SceneManager.LoadScene("MainMenu");
+    }
+
 
     /* Touch Input Stuff */
 

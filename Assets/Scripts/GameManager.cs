@@ -6,10 +6,13 @@ public class GameManager : IPersistentSingleton<GameManager>
     private LibrasSign[] _librasLetterSigns;
     private LibrasSign[] _librasWordSigns;
 
+    private PlayerController player;
+
     protected override void Awake()
     {
         base.Awake();
         this._librasLetterSigns = Resources.LoadAll<LibrasSign>("LibrasSigns/Letters");
+        player = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
     }
 
     // TODO: implementar track de dup
@@ -22,5 +25,6 @@ public class GameManager : IPersistentSingleton<GameManager>
     {
         Debug.Log("Encontrou o Minotauro");
         GameObject.Find("Canvas").GetComponent<UIController>().ActivateGameOver();
+        player.SetIsActive(false);
     }
 }
