@@ -14,7 +14,7 @@ public class UIController : MonoBehaviour
 
     private List<IDraggable> _draggableCards = new List<IDraggable>();
 
-    private const int MAX_HAND_CAPACITY = 8;
+    private const int MAX_HAND_CAPACITY = 10;
 
     private int _currentDraggedCardIndex = -1;
     private int _currentCardDragFingerID = -1;
