@@ -8,6 +8,8 @@ TagManager:
   - BossRoom
   - Cutscene
   - Joystick
+  - Spawnpoint
+  - Spawndoor
   layers:
   - Default
   - TransparentFX
