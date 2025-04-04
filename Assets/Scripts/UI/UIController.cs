@@ -9,12 +9,13 @@ public class UIController : MonoBehaviour
 {
     [SerializeField] private Transform _cardSlotPanel;
     [SerializeField] private GameObject _cardSlotPrefab;
+    [SerializeField] private GameObject tutorialPanel;
     [SerializeField] private GameObject gameOverPanel;
     [SerializeField] private GameObject vignette;
 
     private List<IDraggable> _draggableCards = new List<IDraggable>();
 
-    private const int MAX_HAND_CAPACITY = 10;
+    private const int MAX_HAND_CAPACITY = 8;
 
     private int _currentDraggedCardIndex = -1;
     private int _currentCardDragFingerID = -1;
@@ -22,6 +23,7 @@ public class UIController : MonoBehaviour
     private void Start()
     {
         vignette.SetActive(true);
+        tutorialPanel.SetActive(true);
         gameOverPanel.SetActive(false);
         for (int i = 0; i < MAX_HAND_CAPACITY; i++) { this.SpawnLibrasCard(); }
     }
@@ -41,6 +43,11 @@ public class UIController : MonoBehaviour
     public void TestCards()
     {
         SceneManager.LoadScene("TestFullUI");
+    }
+
+    public void CloseTutorial()
+    {
+        tutorialPanel.SetActive(false);
     }
     public void BackToMenu()
     {
