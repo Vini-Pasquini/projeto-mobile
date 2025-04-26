@@ -31,7 +31,6 @@ public class GameManager : IPersistentSingleton<GameManager>
         Debug.Log("Player nasceu no spawn " + spawn);
     }
 
-    // TODO: implementar track de dup
     public LibrasSign GetRandomLibrasSign()
     {
         return this._librasLetterSigns[Random.Range(0, this._librasLetterSigns.Length)];

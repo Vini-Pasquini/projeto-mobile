@@ -20,12 +20,15 @@ public class UIController : MonoBehaviour
     private int _currentDraggedCardIndex = -1;
     private int _currentCardDragFingerID = -1;
 
+    private List<LibrasSign> _oldCardHandBuffer = new List<LibrasSign>();
+    private List<LibrasSign> _newCardHandBuffer = new List<LibrasSign>();
+
     private void Start()
     {
         vignette.SetActive(true);
         tutorialPanel.SetActive(true);
         gameOverPanel.SetActive(false);
-        for (int i = 0; i < MAX_HAND_CAPACITY; i++) { this.SpawnLibrasCard(); }
+        this.DrawFullCardHand();
     }
 
     private void Update()
@@ -170,15 +173,35 @@ public class UIController : MonoBehaviour
 
         this._draggableCards.Clear();
         
+        this.DrawFullCardHand();
+    }
+
+    private void DrawFullCardHand()
+    {
         for (int i = 0; i < MAX_HAND_CAPACITY; i++) { this.SpawnLibrasCard(); }
+        this._oldCardHandBuffer.Clear();
+
+        for (int i = 0; i < this._newCardHandBuffer.Count; i++) { this._oldCardHandBuffer.Add(this._newCardHandBuffer[i]); }
+        
+        this._newCardHandBuffer.Clear();
     }
 
     private void SpawnLibrasCard()
     {
+        LibrasSign newLibrasSign = GameManager.Instance.GetRandomLibrasSign();
+
+        while (this._oldCardHandBuffer.Contains(newLibrasSign) || this._newCardHandBuffer.Contains(newLibrasSign))
+        {
+            newLibrasSign = GameManager.Instance.GetRandomLibrasSign();
+        }
+
+        this._newCardHandBuffer.Add(newLibrasSign);
+
         GameObject newCardSlot = Instantiate(this._cardSlotPrefab, this._cardSlotPanel);
-        Card newCard = new Card(newCardSlot, GameManager.Instance.GetRandomLibrasSign());
+        Card newCard = new Card(newCardSlot, newLibrasSign);
         this._draggableCards.Add(newCard);
     }
+
 
     public void ActivateGameOver()
     {
