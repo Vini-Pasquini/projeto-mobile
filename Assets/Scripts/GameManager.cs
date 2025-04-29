@@ -15,7 +15,10 @@ public class GameManager : IPersistentSingleton<GameManager>
     protected override void Awake()
     {
         base.Awake();
+
         this._librasLetterSigns = Resources.LoadAll<LibrasSign>("LibrasSigns/Letters");
+        this._librasWordSigns = Resources.LoadAll<LibrasSign>("LibrasSigns/Words");
+
         player = GameObject.FindWithTag("Player");
         playerCtrl = player.GetComponent<PlayerController>();
         door = GameObject.FindWithTag("Spawndoor");
@@ -31,9 +34,14 @@ public class GameManager : IPersistentSingleton<GameManager>
         Debug.Log("Player nasceu no spawn " + spawn);
     }
 
-    public LibrasSign GetRandomLibrasSign()
+    public LibrasSign GetRandomLibrasLetterSign()
     {
         return this._librasLetterSigns[Random.Range(0, this._librasLetterSigns.Length)];
+    }
+
+    public LibrasSign GetRandomLibrasWordSign()
+    {
+        return this._librasWordSigns[Random.Range(0, this._librasWordSigns.Length)];
     }
 
     public void EnterBossRoom()

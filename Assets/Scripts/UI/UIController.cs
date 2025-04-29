@@ -23,6 +23,8 @@ public class UIController : MonoBehaviour
     private List<LibrasSign> _oldCardHandBuffer = new List<LibrasSign>();
     private List<LibrasSign> _newCardHandBuffer = new List<LibrasSign>();
 
+    [SerializeField] private QuestionPuzzleController _questionPuzzleController;
+
     private void Start()
     {
         vignette.SetActive(true);
@@ -34,6 +36,13 @@ public class UIController : MonoBehaviour
     private void Update()
     {
         this.TouchHandler();
+
+        // DEBUG
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            this._questionPuzzleController.StartLibrasPuzzle(GameManager.Instance.GetRandomLibrasWordSign());
+        }
     }
 
     // Buttons
@@ -172,7 +181,7 @@ public class UIController : MonoBehaviour
         for (int i = 0; i < this._draggableCards.Count; i++) { (this._draggableCards[i] as Card).ConsumeCard(); }
 
         this._draggableCards.Clear();
-        
+
         this.DrawFullCardHand();
     }
 
@@ -182,17 +191,17 @@ public class UIController : MonoBehaviour
         this._oldCardHandBuffer.Clear();
 
         for (int i = 0; i < this._newCardHandBuffer.Count; i++) { this._oldCardHandBuffer.Add(this._newCardHandBuffer[i]); }
-        
+
         this._newCardHandBuffer.Clear();
     }
 
     private void SpawnLibrasCard()
     {
-        LibrasSign newLibrasSign = GameManager.Instance.GetRandomLibrasSign();
+        LibrasSign newLibrasSign = GameManager.Instance.GetRandomLibrasLetterSign();
 
         while (this._oldCardHandBuffer.Contains(newLibrasSign) || this._newCardHandBuffer.Contains(newLibrasSign))
         {
-            newLibrasSign = GameManager.Instance.GetRandomLibrasSign();
+            newLibrasSign = GameManager.Instance.GetRandomLibrasLetterSign();
         }
 
         this._newCardHandBuffer.Add(newLibrasSign);
@@ -201,7 +210,6 @@ public class UIController : MonoBehaviour
         Card newCard = new Card(newCardSlot, newLibrasSign);
         this._draggableCards.Add(newCard);
     }
-
 
     public void ActivateGameOver()
     {

@@ -7,7 +7,7 @@ public class DoorController : MonoBehaviour
 
     private void Start()
     {
-        this._librasSignLock = GameManager.Instance.GetRandomLibrasSign();
+        this._librasSignLock = GameManager.Instance.GetRandomLibrasLetterSign();
 
         this.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = this._librasSignLock.SignSprite;
     }
