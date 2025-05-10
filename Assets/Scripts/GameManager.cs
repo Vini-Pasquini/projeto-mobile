@@ -43,4 +43,11 @@ public class GameManager : IPersistentSingleton<GameManager>
         GameObject.Find("Canvas").GetComponent<UIController>().ActivateGameOver();
         playerCtrl.SetIsActive(false);
     }
+
+    public void PlayerDeath()
+    {
+        Debug.Log("Player morreu");
+        GameObject.Find("Canvas").GetComponent<UIController>().ActivateGameOver();
+        playerCtrl.SetIsActive(false);
+    }
 }

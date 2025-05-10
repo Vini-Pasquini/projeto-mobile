@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: f3e7b7cf85124d7458551e0177a0a89f
+guid: 8a7e21bc85501024591f6a174064d82c
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -1080554493355756316
-    second: prota_0
+      213: 1833025649356401776
+    second: minotaurowhite_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -51,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 7
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 512
+  spritePixelsToUnits: 256
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -126,13 +126,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: prota_0
+      name: minotaurowhite_0
       rect:
         serializedVersion: 2
-        x: 86
-        y: 13
-        width: 340
-        height: 482
+        x: 34
+        y: 6
+        width: 471
+        height: 499
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 4e4f31fc9691101f0800000000000000
-      internalID: -1080554493355756316
+      spriteID: 07c6116cd17307910800000000000000
+      internalID: 1833025649356401776
       vertices: []
       indices: 
       edges: []
@@ -161,7 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      prota_0: -1080554493355756316
+      minotaurowhite_0: 1833025649356401776
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

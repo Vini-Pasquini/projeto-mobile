@@ -4,6 +4,7 @@ public class PlayerController : MonoBehaviour
 {
     public MovementJoystick joystick;
 
+    [SerializeField] private int health = 3;
     [SerializeField] private float speed = 5f;
     [SerializeField] private bool isActive = true;
     private Vector2 moveDirection;
@@ -36,6 +37,17 @@ public class PlayerController : MonoBehaviour
         else
         {
             rb.linearVelocity = Vector2.zero;
+        }
+    }
+
+    public void TakeHit()
+    {
+        Debug.Log("Tomou dano");
+        health--;
+
+        if (health <= 0)
+        {
+            GameManager.Instance.PlayerDeath();
         }
     }
 
