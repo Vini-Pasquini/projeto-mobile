@@ -12,6 +12,8 @@ public class GameManager : IPersistentSingleton<GameManager>
     private GameObject player;
     private PlayerController playerCtrl;
 
+    private UIController _currentUIController;
+
     protected override void Awake()
     {
         base.Awake();
@@ -25,6 +27,8 @@ public class GameManager : IPersistentSingleton<GameManager>
         door.SetActive(false);
 
         this.spawnpoints = GameObject.FindGameObjectsWithTag("Spawnpoint");
+
+        this._currentUIController = GameObject.Find("Canvas").GetComponent<UIController>(); // CASO MUDAR DE CENA, ACHAR UICONTROLLER DNV
     }
 
     private void Start()
@@ -47,7 +51,39 @@ public class GameManager : IPersistentSingleton<GameManager>
     public void EnterBossRoom()
     {
         Debug.Log("Encontrou o Minotauro");
-        GameObject.Find("Canvas").GetComponent<UIController>().ActivateGameOver();
+        this._currentUIController.ActivateGameOver();
         playerCtrl.SetIsActive(false);
+    }
+
+    private GameObject _chestInRange = null;
+    public GameObject ChestInRange { get { return this._chestInRange; } }
+    
+    private ChestController _chestController = null;
+    public ChestController ChestController
+    {
+        get
+        {
+            if (this._chestController == null) { this._chestController = this._chestInRange.GetComponent<ChestController>(); }
+            return this._chestController;
+        }
+    }
+
+    public bool RegisterChestInRange(GameObject chest)
+    {
+        if (this._chestInRange != null) return false;
+
+        this._chestInRange = chest;
+        this._currentUIController.SetInteractionButtonState(true);
+        return true;
+    }
+
+    public bool UnregisterChestInRange(GameObject chest)
+    {
+        if (this._chestInRange == null || this._chestInRange != chest) return false;
+
+        this._chestInRange = null;
+        this._chestController = null;
+        this._currentUIController.SetInteractionButtonState(false);
+        return true;
     }
 }

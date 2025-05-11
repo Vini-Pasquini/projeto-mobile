@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: d8d9004a64c195d4cb0ebb93b4859686
+guid: a28da6bd2c192f948972b1bb490c0d0c
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 2134266088280624968
-    second: Carta (1)_0
+      213: -5281422124547630143
+    second: Chest_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -51,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 512
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -109,30 +109,17 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Carta (1)_0
+      name: Chest_Closed
       rect:
         serializedVersion: 2
-        x: 100
-        y: 19
-        width: 313
-        height: 477
+        x: 0
+        y: 0
+        width: 512
+        height: 512
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,8 +128,30 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 84f012013bf6e9d10800000000000000
-      internalID: 2134266088280624968
+      spriteID: 1cb13755f8e94b6b0800000000000000
+      internalID: -5281422124547630143
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Chest_Open
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 0
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 65e835fbd13a8b849ac1e38baddb7a74
+      internalID: -301325780
       vertices: []
       indices: 
       edges: []
@@ -151,7 +160,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 4fa05e4795891e24b95547bcc69a9700
     internalID: 0
     vertices: []
     indices: 
@@ -161,7 +170,8 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Carta (1)_0: 2134266088280624968
+      Chest_Closed: -5281422124547630143
+      Chest_Open: -301325780
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

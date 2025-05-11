@@ -215,4 +215,16 @@ public class UIController : MonoBehaviour
     {
         gameOverPanel.SetActive(true);
     }
+
+    [SerializeField] private Button _interactionButton;
+
+    public void SetInteractionButtonState(bool active)
+    {
+        this._interactionButton.interactable = active;
+    }
+
+    public void OnInteractionButtonPress()
+    {
+        this._questionPuzzleController.StartLibrasPuzzle(GameManager.Instance.ChestController.PuzzleSolution);
+    }
 }

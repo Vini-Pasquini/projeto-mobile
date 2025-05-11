@@ -94,5 +94,6 @@ public class QuestionPuzzleController : MonoBehaviour
     public void OnClosePuzzleButtonPress()
     {
         bool flag = EndPuzzle();
+        if (flag) { GameManager.Instance.ChestController.DisableChestPuzzle(); }
     }
 }
