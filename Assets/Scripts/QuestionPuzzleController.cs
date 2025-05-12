@@ -4,6 +4,13 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
+public enum QuestionPuzzleMode
+{
+    None,
+    PowerUpChest,
+    BossFight,
+}
+
 public class QuestionPuzzleController : MonoBehaviour
 {
     private LibrasSign _signAnswer;
@@ -19,6 +26,8 @@ public class QuestionPuzzleController : MonoBehaviour
     [SerializeField] private Image[] _optionSignImages;
 
     private GameObject _questionPuzzlePanel;
+
+    private QuestionPuzzleMode _currentQuestionPuzzleMode = QuestionPuzzleMode.None;
 
     private void Start()
     {
@@ -53,11 +62,12 @@ public class QuestionPuzzleController : MonoBehaviour
         this._questionText.transform.parent.GetComponent<Image>().color = new Color(0f, .25f, 1f, .5f); ; // PH DEBUG
     }
 
-    public void StartLibrasPuzzle(LibrasSign answer)
+    public void StartLibrasPuzzle(LibrasSign answer, QuestionPuzzleMode mode)
     {
-        if (this._questionPuzzlePanel.activeSelf) return;
+        if (this._questionPuzzlePanel.activeSelf || mode == QuestionPuzzleMode.None) return;
 
         this._signAnswer = answer;
+        this._currentQuestionPuzzleMode = mode;
         this.InitPuzzle();
         this._questionPuzzlePanel.SetActive(true);
     }
@@ -93,7 +103,13 @@ public class QuestionPuzzleController : MonoBehaviour
 
     public void OnClosePuzzleButtonPress()
     {
-        bool flag = EndPuzzle();
-        if (flag) { GameManager.Instance.ChestController.DisableChestPuzzle(); }
+        bool passFlag = EndPuzzle();
+        switch (this._currentQuestionPuzzleMode)
+        {
+            case QuestionPuzzleMode.PowerUpChest: GameManager.Instance.ChestController.DisableChestPuzzle(passFlag); break;
+            case QuestionPuzzleMode.BossFight: /**/ break;
+            default: break;
+        }
+        this._currentQuestionPuzzleMode = QuestionPuzzleMode.None;
     }
 }

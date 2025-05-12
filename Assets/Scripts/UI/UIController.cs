@@ -36,13 +36,6 @@ public class UIController : MonoBehaviour
     private void Update()
     {
         this.TouchHandler();
-
-        // DEBUG
-
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            this._questionPuzzleController.StartLibrasPuzzle(GameManager.Instance.GetRandomLibrasWordSign());
-        }
     }
 
     // Buttons
@@ -225,6 +218,22 @@ public class UIController : MonoBehaviour
 
     public void OnInteractionButtonPress()
     {
-        this._questionPuzzleController.StartLibrasPuzzle(GameManager.Instance.ChestController.PuzzleSolution);
+        this._questionPuzzleController.StartLibrasPuzzle(GameManager.Instance.ChestController.PuzzleSolution, QuestionPuzzleMode.PowerUpChest);
+    }
+
+    [SerializeField] private Image _powerUpButtonIcon;
+    [SerializeField] private Sprite _defaultButtonNegocioPlaceholder;
+
+    public void UpdatePowerUpIcon()
+    {
+        PowerUp powerUp = GameManager.Instance.PowerUpSlot;
+        this._powerUpButtonIcon.sprite = powerUp == null ? this._defaultButtonNegocioPlaceholder : powerUp.powerUpIcon;
+        //if (powerUp == null) return;
+        //this._powerUpButtonIcon.sprite = powerUp.powerUpIcon;
+    }
+
+    public void OnPowerUpButtonPress()
+    {
+        GameManager.Instance.UsePowerUp();
     }
 }

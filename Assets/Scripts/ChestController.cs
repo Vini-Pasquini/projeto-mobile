@@ -2,15 +2,11 @@ using UnityEngine;
 
 public class ChestController : MonoBehaviour
 {
-    private LibrasSign _puzzleSolution;
+    [SerializeField] private LibrasSign _puzzleSolution;
+    [SerializeField] private PowerUp _powerUpReward;
     public LibrasSign PuzzleSolution { get { return this._puzzleSolution; } }
 
     private bool _solved = false;
-
-    private void Start()
-    {
-        this._puzzleSolution = GameManager.Instance.GetRandomLibrasWordSign(); // PH
-    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -28,11 +24,13 @@ public class ChestController : MonoBehaviour
         }
     }
 
-    public void DisableChestPuzzle()
+    public void DisableChestPuzzle(bool succeeded)
     {
         this._solved = true;
         this.GetComponent<SpriteRenderer>().sprite = open; // PH
         GameManager.Instance.UnregisterChestInRange(this.gameObject);
+
+        if (succeeded) { GameManager.Instance.SetPowerUpSlot(this._powerUpReward); }
     }
 
 

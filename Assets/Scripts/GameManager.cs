@@ -86,4 +86,23 @@ public class GameManager : IPersistentSingleton<GameManager>
         this._currentUIController.SetInteractionButtonState(false);
         return true;
     }
+
+    private PowerUp _powerUpSlot = null;
+    public PowerUp PowerUpSlot { get { return this._powerUpSlot; } }
+
+    public void SetPowerUpSlot(PowerUp reward)
+    {
+        if (this._powerUpSlot != null) return; // TODO: dar opcao de trocar o powerup equipado
+        this._powerUpSlot = reward;
+        this._currentUIController.UpdatePowerUpIcon();
+    }
+
+    public void UsePowerUp()
+    {
+        if (this._powerUpSlot == null) return;
+
+        GameObject powerUpProp = GameObject.Instantiate(this._powerUpSlot.powerUpProp, player.transform.position, Quaternion.identity); // PH
+        this._powerUpSlot = null;
+        this._currentUIController.UpdatePowerUpIcon();
+    }
 }
