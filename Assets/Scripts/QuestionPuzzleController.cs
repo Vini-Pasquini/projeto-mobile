@@ -64,6 +64,8 @@ public class QuestionPuzzleController : MonoBehaviour
 
     public void StartLibrasPuzzle(LibrasSign answer, QuestionPuzzleMode mode)
     {
+        Debug.Log(mode.ToString());
+
         if (this._questionPuzzlePanel.activeSelf || mode == QuestionPuzzleMode.None) return;
 
         this._signAnswer = answer;

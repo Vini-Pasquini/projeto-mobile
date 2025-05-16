@@ -105,4 +105,15 @@ public class GameManager : IPersistentSingleton<GameManager>
         this._powerUpSlot = null;
         this._currentUIController.UpdatePowerUpIcon();
     }
+
+    public void CallBossPuzzle(LibrasSign setAnswer = null)
+    {
+        Debug.Log("GM CALL");
+
+        if (this._currentUIController.QuestionPuzzleController == null) return;
+
+        LibrasSign answerWord = setAnswer != null ? setAnswer : this.GetRandomLibrasWordSign();
+
+        this._currentUIController.QuestionPuzzleController.StartLibrasPuzzle(answerWord, QuestionPuzzleMode.BossFight);
+    }
 }

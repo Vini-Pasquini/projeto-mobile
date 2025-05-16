@@ -24,6 +24,7 @@ public class UIController : MonoBehaviour
     private List<LibrasSign> _newCardHandBuffer = new List<LibrasSign>();
 
     [SerializeField] private QuestionPuzzleController _questionPuzzleController;
+    public QuestionPuzzleController QuestionPuzzleController { get { return this._questionPuzzleController; } }
 
     private void Start()
     {
@@ -36,6 +37,13 @@ public class UIController : MonoBehaviour
     private void Update()
     {
         this.TouchHandler();
+
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Debug.Log("GET KEY");
+            GameManager.Instance.CallBossPuzzle();
+        }
     }
 
     // Buttons
@@ -54,11 +62,11 @@ public class UIController : MonoBehaviour
     {
         tutorialPanel.SetActive(false);
     }
+
     public void BackToMenu()
     {
         SceneManager.LoadScene("MainMenu");
     }
-
 
     /* Touch Input Stuff */
 
