@@ -11,7 +11,7 @@ public class PowerUp : ScriptableObject
 
     public void Cast(Transform caster)
     {
-        GameObject newProp = GameObject.Instantiate(powerUpProp, caster.position, Quaternion.identity);
+        GameObject newProp = GameObject.Instantiate(powerUpProp, caster, false);
         newProp.GetComponent<PowerUpProp>().InitPowerUp(lifeTime);
     }
 }
