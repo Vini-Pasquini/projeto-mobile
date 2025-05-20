@@ -101,7 +101,7 @@ public class GameManager : IPersistentSingleton<GameManager>
     {
         if (this._powerUpSlot == null) return;
 
-        GameObject powerUpProp = GameObject.Instantiate(this._powerUpSlot.powerUpProp, player.transform.position, Quaternion.identity); // PH
+        this._powerUpSlot.Cast(player.transform);
         this._powerUpSlot = null;
         this._currentUIController.UpdatePowerUpIcon();
     }
