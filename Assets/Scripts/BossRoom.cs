@@ -2,12 +2,14 @@ using UnityEngine;
 
 public class BossRoom : MonoBehaviour
 {
+    public bool playerEntered = false;
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
-            GameManager.Instance.EnterBossRoom();
+            playerEntered = true;
+            //GameManager.Instance.EnterBossRoom();
         }
     }
 }

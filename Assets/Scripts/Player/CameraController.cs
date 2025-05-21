@@ -6,6 +6,7 @@ public class CameraController : MonoBehaviour
 {
     public Transform target;
     public float smoothing;
+    public float yOffset;
 
     public Vector2 maxPos;
     public Vector2 minPos;
@@ -14,7 +15,7 @@ public class CameraController : MonoBehaviour
     {
         if (transform.position != target.position)
         {
-            Vector3 targetPos = new Vector3(target.position.x, target.position.y, transform.position.z);
+            Vector3 targetPos = new Vector3(target.position.x, target.position.y + yOffset, transform.position.z);
 
             targetPos.x = Mathf.Clamp(targetPos.x, minPos.x, maxPos.x);
             targetPos.y = Mathf.Clamp(targetPos.y, minPos.y, maxPos.y);

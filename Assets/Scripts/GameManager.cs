@@ -116,4 +116,11 @@ public class GameManager : IPersistentSingleton<GameManager>
 
         this._currentUIController.QuestionPuzzleController.StartLibrasPuzzle(answerWord, QuestionPuzzleMode.BossFight);
     }
+
+    public void PlayerDeath()
+    {
+        Debug.Log("Player morreu");
+        GameObject.Find("Canvas").GetComponent<UIController>().ActivateGameOver();
+        playerCtrl.SetIsActive(false);
+    }
 }

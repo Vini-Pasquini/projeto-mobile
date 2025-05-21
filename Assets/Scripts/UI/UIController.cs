@@ -11,7 +11,7 @@ public class UIController : MonoBehaviour
     [SerializeField] private GameObject _cardSlotPrefab;
     [SerializeField] private GameObject tutorialPanel;
     [SerializeField] private GameObject gameOverPanel;
-    [SerializeField] private GameObject vignette;
+    //[SerializeField] private GameObject vignette;
 
     private List<IDraggable> _draggableCards = new List<IDraggable>();
 
@@ -28,7 +28,7 @@ public class UIController : MonoBehaviour
 
     private void Start()
     {
-        vignette.SetActive(true);
+        //vignette.SetActive(true);
         tutorialPanel.SetActive(true);
         gameOverPanel.SetActive(false);
         this.DrawFullCardHand();
