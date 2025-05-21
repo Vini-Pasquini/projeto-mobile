@@ -8,6 +8,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private bool isActive = true;
     private Vector2 moveDirection;
 
+    private float speedMultiplier = 1f;
+
     private Rigidbody2D rb;
 
     void Start()
@@ -21,7 +23,7 @@ public class PlayerController : MonoBehaviour
         {
             if (joystick.joystickVec.y != 0)
             {
-                rb.linearVelocity = new Vector2(joystick.joystickVec.x, joystick.joystickVec.y) * speed;
+                rb.linearVelocity = new Vector2(joystick.joystickVec.x, joystick.joystickVec.y) * speed * speedMultiplier;
             }
             else
             {
@@ -31,7 +33,7 @@ public class PlayerController : MonoBehaviour
             moveDirection = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
 
             if (moveDirection != Vector2.zero)
-                rb.linearVelocity = moveDirection * speed;
+                rb.linearVelocity = moveDirection * speed * speedMultiplier;
         }
         else
         {
@@ -40,4 +42,9 @@ public class PlayerController : MonoBehaviour
     }
 
     public void SetIsActive(bool active) { this.isActive = active; }
+
+    public void SetSpeedMultiplier(float multiplier)
+    {
+        this.speedMultiplier = multiplier;
+    }
 }

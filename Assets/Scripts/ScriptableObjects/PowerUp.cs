@@ -9,9 +9,10 @@ public class PowerUp : ScriptableObject
     [Tooltip("equal or less than 0 lifeTime makes powerup permanent")]
     public float lifeTime;
 
-    public void Cast(Transform caster)
+    public float Cast(Transform caster)
     {
         GameObject newProp = GameObject.Instantiate(powerUpProp, caster, false);
         newProp.GetComponent<PowerUpProp>().InitPowerUp(lifeTime);
+        return lifeTime;
     }
 }

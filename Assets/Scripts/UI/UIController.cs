@@ -38,6 +38,12 @@ public class UIController : MonoBehaviour
     {
         this.TouchHandler();
 
+        if (this._powerUpTimer > 0f)
+        {
+            this._powerUpTimerImage.fillAmount = this._countDown / this._powerUpTimer;
+            this._countDown -= Time.deltaTime;
+            if (this._countDown <= 0f) this._powerUpTimer = 0f;
+        }
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -230,10 +236,15 @@ public class UIController : MonoBehaviour
     }
 
     [SerializeField] private Image _powerUpButtonIcon;
+    [SerializeField] private Image _powerUpTimerImage;
     [SerializeField] private Sprite _defaultButtonNegocioPlaceholder;
 
-    public void UpdatePowerUpIcon()
+    private float _powerUpTimer = 0f;
+    private float _countDown = 0f;
+
+    public void UpdatePowerUpIcon(float timer = 0f)
     {
+        this._powerUpTimer = this._countDown = timer;
         PowerUp powerUp = GameManager.Instance.PowerUpSlot;
         this._powerUpButtonIcon.sprite = powerUp == null ? this._defaultButtonNegocioPlaceholder : powerUp.powerUpIcon;
         //if (powerUp == null) return;

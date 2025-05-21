@@ -101,9 +101,9 @@ public class GameManager : IPersistentSingleton<GameManager>
     {
         if (this._powerUpSlot == null) return;
 
-        this._powerUpSlot.Cast(player.transform);
+        float timer = this._powerUpSlot.Cast(player.transform);
         this._powerUpSlot = null;
-        this._currentUIController.UpdatePowerUpIcon();
+        this._currentUIController.UpdatePowerUpIcon(timer);
     }
 
     public void CallBossPuzzle(LibrasSign setAnswer = null)

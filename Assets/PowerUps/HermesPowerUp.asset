@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5e332cbbb51d6ce44b419e1512f52d1c, type: 3}
-  m_Name: ZeusPowerUp
+  m_Name: HermesPowerUp
   m_EditorClassIdentifier: 
-  powerUpName: Zeus Gogo
-  powerUpIcon: {fileID: 21300000, guid: 27730d463bf9b4742a887c20385f1d78, type: 3}
-  powerUpProp: {fileID: 3553982665673073277, guid: 71c3748855f1ce24f8f51c81758521a5, type: 3}
-  lifeTime: 30
+  powerUpName: Hermes Power
+  powerUpIcon: {fileID: 21300000, guid: f26fa8880b3aeef4b8516c82dc12f2a5, type: 3}
+  powerUpProp: {fileID: 720494904496985354, guid: 53b3852722164024583a8158d7680440, type: 3}
+  lifeTime: 10
