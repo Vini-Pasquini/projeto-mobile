@@ -67,8 +67,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Assistir
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: ee0b9775ff2f0b145aa246d1f9327aa8, type: 2}
-  m_sharedMaterial: {fileID: 99429407562366025, guid: ee0b9775ff2f0b145aa246d1f9327aa8, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: ce6aa7e0707576f4da6b1ca76579d695, type: 2}
+  m_sharedMaterial: {fileID: -8621797884067827013, guid: ce6aa7e0707576f4da6b1ca76579d695, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -846,8 +846,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Entendi
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 766de61101f165e49a1271198f45468b, type: 2}
-  m_sharedMaterial: {fileID: 2444988994437446439, guid: 766de61101f165e49a1271198f45468b, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: ce6aa7e0707576f4da6b1ca76579d695, type: 2}
+  m_sharedMaterial: {fileID: -8621797884067827013, guid: ce6aa7e0707576f4da6b1ca76579d695, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1329,8 +1329,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Menu
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 766de61101f165e49a1271198f45468b, type: 2}
-  m_sharedMaterial: {fileID: 2444988994437446439, guid: 766de61101f165e49a1271198f45468b, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: ce6aa7e0707576f4da6b1ca76579d695, type: 2}
+  m_sharedMaterial: {fileID: -8621797884067827013, guid: ce6aa7e0707576f4da6b1ca76579d695, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2113,8 +2113,8 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 766de61101f165e49a1271198f45468b, type: 2}
-  m_sharedMaterial: {fileID: 2444988994437446439, guid: 766de61101f165e49a1271198f45468b, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: ce6aa7e0707576f4da6b1ca76579d695, type: 2}
+  m_sharedMaterial: {fileID: -8621797884067827013, guid: ce6aa7e0707576f4da6b1ca76579d695, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2138,13 +2138,13 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 80
-  m_fontSizeBase: 80
+  m_fontSize: 90
+  m_fontSizeBase: 90
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 16
+  m_fontStyle: 17
   m_HorizontalAlignment: 32
   m_VerticalAlignment: 256
   m_textAlignment: 65535
@@ -2423,9 +2423,9 @@ RectTransform:
   - {fileID: 6846924075566122221}
   m_Father: {fileID: 8600758050495090193}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1349.1377, y: -200}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 1348.7495, y: 0}
   m_SizeDelta: {x: 500, y: 650}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3708187734385343277
@@ -2747,9 +2747,9 @@ RectTransform:
   - {fileID: 6831688660574733614}
   m_Father: {fileID: 8600758050495090193}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 809.48267, y: -200}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 809.24976, y: 0}
   m_SizeDelta: {x: 500, y: 650}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8529628019759274834
@@ -4205,8 +4205,8 @@ MonoBehaviour:
     especial que pode te ajudar a solucion\xE1-los:\nUse suas cartas nos pilares
     corretos, e o caminho se abrir\xE1 para voc\xEA."
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: ee0b9775ff2f0b145aa246d1f9327aa8, type: 2}
-  m_sharedMaterial: {fileID: 99429407562366025, guid: ee0b9775ff2f0b145aa246d1f9327aa8, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: ce6aa7e0707576f4da6b1ca76579d695, type: 2}
+  m_sharedMaterial: {fileID: -8621797884067827013, guid: ce6aa7e0707576f4da6b1ca76579d695, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -4230,8 +4230,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 60
-  m_fontSizeBase: 60
+  m_fontSize: 75
+  m_fontSizeBase: 75
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -4339,10 +4339,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "PARAB\xC9NS!\n\nVoc\xEA encontrou o Minotauro"
+  m_text: Fim de jogo
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: ee0b9775ff2f0b145aa246d1f9327aa8, type: 2}
-  m_sharedMaterial: {fileID: 99429407562366025, guid: ee0b9775ff2f0b145aa246d1f9327aa8, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: ce6aa7e0707576f4da6b1ca76579d695, type: 2}
+  m_sharedMaterial: {fileID: -8621797884067827013, guid: ce6aa7e0707576f4da6b1ca76579d695, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -4372,7 +4372,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 9
+  m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -4593,9 +4593,9 @@ RectTransform:
   - {fileID: 1947374826775507662}
   m_Father: {fileID: 8600758050495090193}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 269.82755, y: -200}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 269.7499, y: 0}
   m_SizeDelta: {x: 500, y: 650}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2353932266284779258
@@ -5081,10 +5081,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Ver anuncio pra ganhar dicionario?
+  m_text: "Ver an\xFAncio para acessar o dicion\xE1rio?"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: ee0b9775ff2f0b145aa246d1f9327aa8, type: 2}
-  m_sharedMaterial: {fileID: 99429407562366025, guid: ee0b9775ff2f0b145aa246d1f9327aa8, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: ce6aa7e0707576f4da6b1ca76579d695, type: 2}
+  m_sharedMaterial: {fileID: -8621797884067827013, guid: ce6aa7e0707576f4da6b1ca76579d695, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -5108,8 +5108,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 85
-  m_fontSizeBase: 85
+  m_fontSize: 100
+  m_fontSizeBase: 100
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
