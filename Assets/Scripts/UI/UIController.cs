@@ -255,4 +255,9 @@ public class UIController : MonoBehaviour
     {
         GameManager.Instance.UsePowerUp();
     }
+
+    public void ToggleCardSigns(bool active)
+    {
+        Debug.Log(active);
+    }
 }
