@@ -1,0 +1,559 @@
+fileFormatVersion: 2
+guid: 64b20d31ebec6a8489166c604df32bf1
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 611564614228883044
+    second: MinotauroRun_11_0
+  - first:
+      213: 5084059149299176253
+    second: MinotauroRun_11_1
+  - first:
+      213: 4480906392760752213
+    second: MinotauroRun_11_2
+  - first:
+      213: 8461929385085068384
+    second: MinotauroRun_11_3
+  - first:
+      213: -1450030635894802009
+    second: MinotauroRun_11_4
+  - first:
+      213: 397254100096927921
+    second: MinotauroRun_11_5
+  - first:
+      213: 8382561964715005291
+    second: MinotauroRun_11_6
+  - first:
+      213: -1353302250805770171
+    second: MinotauroRun_11_7
+  - first:
+      213: -1959724858311883403
+    second: MinotauroRun_11_8
+  - first:
+      213: 2220645101221715656
+    second: MinotauroRun_11_9
+  - first:
+      213: 6377950711757257423
+    second: MinotauroRun_11_10
+  - first:
+      213: -2136480901185989425
+    second: MinotauroRun_11_11
+  - first:
+      213: -594366343902945953
+    second: MinotauroRun_11_12
+  - first:
+      213: -1832485402796989935
+    second: MinotauroRun_11_13
+  - first:
+      213: -4468639409963786651
+    second: MinotauroRun_11_14
+  - first:
+      213: -7941275965307900755
+    second: MinotauroRun_11_15
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 7
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 256
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: MinotauroRun_11_0
+      rect:
+        serializedVersion: 2
+        x: 31
+        y: 3
+        width: 447
+        height: 494
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 466bf44c6c6bc7800800000000000000
+      internalID: 611564614228883044
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MinotauroRun_11_1
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 185
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d335d0b1cd43e8640800000000000000
+      internalID: 5084059149299176253
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MinotauroRun_11_2
+      rect:
+        serializedVersion: 2
+        x: 453
+        y: 178
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 55818449f906f2e30800000000000000
+      internalID: 4480906392760752213
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MinotauroRun_11_3
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 102
+        width: 18
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0646f6841ffce6570800000000000000
+      internalID: 8461929385085068384
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MinotauroRun_11_4
+      rect:
+        serializedVersion: 2
+        x: 44
+        y: 127
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7a97e0ab1d470ebe0800000000000000
+      internalID: -1450030635894802009
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MinotauroRun_11_5
+      rect:
+        serializedVersion: 2
+        x: 51
+        y: 126
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1b848d1df74538500800000000000000
+      internalID: 397254100096927921
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MinotauroRun_11_6
+      rect:
+        serializedVersion: 2
+        x: 488
+        y: 113
+        width: 15
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b65d986b1b7d45470800000000000000
+      internalID: 8382561964715005291
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MinotauroRun_11_7
+      rect:
+        serializedVersion: 2
+        x: 451
+        y: 118
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5484cf2e5ca183de0800000000000000
+      internalID: -1353302250805770171
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MinotauroRun_11_8
+      rect:
+        serializedVersion: 2
+        x: 459
+        y: 118
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 57541dadf98adc4e0800000000000000
+      internalID: -1959724858311883403
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MinotauroRun_11_9
+      rect:
+        serializedVersion: 2
+        x: 460
+        y: 98
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8ce188e34f051de10800000000000000
+      internalID: 2220645101221715656
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MinotauroRun_11_10
+      rect:
+        serializedVersion: 2
+        x: 485
+        y: 97
+        width: 11
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fcabd396168038850800000000000000
+      internalID: 6377950711757257423
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MinotauroRun_11_11
+      rect:
+        serializedVersion: 2
+        x: 51
+        y: 53
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fc4176f90f1b952e0800000000000000
+      internalID: -2136480901185989425
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MinotauroRun_11_12
+      rect:
+        serializedVersion: 2
+        x: 450
+        y: 44
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f5d973595f260c7f0800000000000000
+      internalID: -594366343902945953
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MinotauroRun_11_13
+      rect:
+        serializedVersion: 2
+        x: 488
+        y: 29
+        width: 10
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 112623e2c34b196e0800000000000000
+      internalID: -1832485402796989935
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MinotauroRun_11_14
+      rect:
+        serializedVersion: 2
+        x: 469
+        y: 12
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 56e1ccbe1243cf1c0800000000000000
+      internalID: -4468639409963786651
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MinotauroRun_11_15
+      rect:
+        serializedVersion: 2
+        x: 474
+        y: 16
+        width: 14
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: daca970959beac190800000000000000
+      internalID: -7941275965307900755
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      MinotauroRun_11_0: 611564614228883044
+      MinotauroRun_11_1: 5084059149299176253
+      MinotauroRun_11_10: 6377950711757257423
+      MinotauroRun_11_11: -2136480901185989425
+      MinotauroRun_11_12: -594366343902945953
+      MinotauroRun_11_13: -1832485402796989935
+      MinotauroRun_11_14: -4468639409963786651
+      MinotauroRun_11_15: -7941275965307900755
+      MinotauroRun_11_2: 4480906392760752213
+      MinotauroRun_11_3: 8461929385085068384
+      MinotauroRun_11_4: -1450030635894802009
+      MinotauroRun_11_5: 397254100096927921
+      MinotauroRun_11_6: 8382561964715005291
+      MinotauroRun_11_7: -1353302250805770171
+      MinotauroRun_11_8: -1959724858311883403
+      MinotauroRun_11_9: 2220645101221715656
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

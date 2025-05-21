@@ -11,7 +11,7 @@ public class UIController : MonoBehaviour
     [SerializeField] private GameObject _cardSlotPrefab;
     [SerializeField] private GameObject tutorialPanel;
     [SerializeField] private GameObject gameOverPanel;
-    [SerializeField] private GameObject vignette;
+    //[SerializeField] private GameObject vignette;
 
     private List<IDraggable> _draggableCards = new List<IDraggable>();
 
@@ -20,17 +20,36 @@ public class UIController : MonoBehaviour
     private int _currentDraggedCardIndex = -1;
     private int _currentCardDragFingerID = -1;
 
+    private List<LibrasSign> _oldCardHandBuffer = new List<LibrasSign>();
+    private List<LibrasSign> _newCardHandBuffer = new List<LibrasSign>();
+
+    [SerializeField] private QuestionPuzzleController _questionPuzzleController;
+    public QuestionPuzzleController QuestionPuzzleController { get { return this._questionPuzzleController; } }
+
     private void Start()
     {
-        vignette.SetActive(true);
+        //vignette.SetActive(true);
         tutorialPanel.SetActive(true);
         gameOverPanel.SetActive(false);
-        for (int i = 0; i < MAX_HAND_CAPACITY; i++) { this.SpawnLibrasCard(); }
+        this.DrawFullCardHand();
     }
 
     private void Update()
     {
         this.TouchHandler();
+
+        if (this._powerUpTimer > 0f)
+        {
+            this._powerUpTimerImage.fillAmount = this._countDown / this._powerUpTimer;
+            this._countDown -= Time.deltaTime;
+            if (this._countDown <= 0f) this._powerUpTimer = 0f;
+        }
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Debug.Log("GET KEY");
+            GameManager.Instance.CallBossPuzzle();
+        }
     }
 
     // Buttons
@@ -49,11 +68,11 @@ public class UIController : MonoBehaviour
     {
         tutorialPanel.SetActive(false);
     }
+
     public void BackToMenu()
     {
         SceneManager.LoadScene("MainMenu");
     }
-
 
     /* Touch Input Stuff */
 
@@ -169,19 +188,112 @@ public class UIController : MonoBehaviour
         for (int i = 0; i < this._draggableCards.Count; i++) { (this._draggableCards[i] as Card).ConsumeCard(); }
 
         this._draggableCards.Clear();
-        
+
+        this.DrawFullCardHand();
+    }
+
+    private void DrawFullCardHand()
+    {
         for (int i = 0; i < MAX_HAND_CAPACITY; i++) { this.SpawnLibrasCard(); }
+        this._oldCardHandBuffer.Clear();
+
+        for (int i = 0; i < this._newCardHandBuffer.Count; i++) { this._oldCardHandBuffer.Add(this._newCardHandBuffer[i]); }
+
+        this._newCardHandBuffer.Clear();
     }
 
     private void SpawnLibrasCard()
     {
+        LibrasSign newLibrasSign = GameManager.Instance.GetRandomLibrasLetterSign();
+
+        while (this._oldCardHandBuffer.Contains(newLibrasSign) || this._newCardHandBuffer.Contains(newLibrasSign))
+        {
+            newLibrasSign = GameManager.Instance.GetRandomLibrasLetterSign();
+        }
+
+        this._newCardHandBuffer.Add(newLibrasSign);
+
         GameObject newCardSlot = Instantiate(this._cardSlotPrefab, this._cardSlotPanel);
-        Card newCard = new Card(newCardSlot, GameManager.Instance.GetRandomLibrasSign());
+
+        Transform card = newCardSlot.transform.GetChild(0);
+
+        card.GetChild(0).gameObject.SetActive(!this._showCardSigns); // libras Text
+        card.GetChild(1).gameObject.SetActive(this._showCardSigns); // libras Sign
+
+        Card newCard = new Card(newCardSlot, newLibrasSign);
         this._draggableCards.Add(newCard);
     }
 
     public void ActivateGameOver()
     {
         gameOverPanel.SetActive(true);
+    }
+
+    [SerializeField] private Button _interactionButton;
+
+    public void SetInteractionButtonState(bool active)
+    {
+        this._interactionButton.interactable = active;
+    }
+
+    public void OnInteractionButtonPress()
+    {
+        this._questionPuzzleController.StartLibrasPuzzle(GameManager.Instance.ChestController.PuzzleSolution, QuestionPuzzleMode.PowerUpChest);
+    }
+
+    [SerializeField] private Image _powerUpButtonIcon;
+    [SerializeField] private Image _powerUpTimerImage;
+    [SerializeField] private Sprite _defaultButtonNegocioPlaceholder;
+
+    private float _powerUpTimer = 0f;
+    private float _countDown = 0f;
+
+    public void UpdatePowerUpIcon(float timer = 0f)
+    {
+        this._powerUpTimer = this._countDown = timer;
+        PowerUp powerUp = GameManager.Instance.PowerUpSlot;
+        this._powerUpButtonIcon.sprite = powerUp == null ? this._defaultButtonNegocioPlaceholder : powerUp.powerUpIcon;
+        //if (powerUp == null) return;
+        //this._powerUpButtonIcon.sprite = powerUp.powerUpIcon;
+    }
+
+    public void OnPowerUpButtonPress()
+    {
+        GameManager.Instance.UsePowerUp();
+    }
+
+    private bool _showCardSigns = false;
+
+    public void ToggleCardSigns(bool active)
+    {
+        this._showCardSigns = active;
+
+        for (int i = 0; i < this._draggableCards.Count; i++)
+        {
+            (this._draggableCards[i] as Card).CardObject.transform.GetChild(0).gameObject.SetActive(!this._showCardSigns); // libras Text
+            (this._draggableCards[i] as Card).CardObject.transform.GetChild(1).gameObject.SetActive(this._showCardSigns); // libras Sign
+        }
+    }
+
+    [SerializeField] private GameObject _dictionaryPanel;
+    [SerializeField] private GameObject _adSuggestionPanel;
+
+    public void OnDictionaryButtonPress()
+    {
+        bool flag = GameManager.Instance.HasUnlockedDic;
+
+        this._dictionaryPanel.SetActive(flag);
+        this._adSuggestionPanel.SetActive(!flag);
+    }
+
+    public void OnCloseDictionaryButtonPress()
+    {
+        this._dictionaryPanel.SetActive(false);
+        this._adSuggestionPanel.SetActive(false);
+    }
+
+    public void OnWatchDictionaryAdButtonPress()
+    {
+        GameManager.Instance.WatchAd();
     }
 }

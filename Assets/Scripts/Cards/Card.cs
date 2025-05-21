@@ -11,6 +11,7 @@ public class Card : IDraggable
     private GameObject _cardObject;
     private Image _cardBackground;
     private TextMeshProUGUI _cardText;
+    private Image _cardSign;
 
     public LibrasSign LibrasSign { get { return this._librasSign; } }
     public GameObject CardObject { get { return this._cardObject; } }
@@ -25,8 +26,10 @@ public class Card : IDraggable
         this._cardObject = this._currentSlot.transform.GetChild(0).gameObject;
         this._cardBackground = this._cardObject.GetComponent<Image>();
         this._cardText = this._cardObject.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
+        this._cardSign = this._cardObject.transform.GetChild(1).GetComponent<Image>();
 
         this._cardText.text = this._librasSign.SignText;
+        this._cardSign.sprite = this._librasSign.SignSprite;
 
         this._isDragging = false;
     }

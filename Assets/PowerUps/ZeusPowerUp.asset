@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e332cbbb51d6ce44b419e1512f52d1c, type: 3}
+  m_Name: ZeusPowerUp
+  m_EditorClassIdentifier: 
+  powerUpName: Zeus Gogo
+  powerUpIcon: {fileID: 21300000, guid: 27730d463bf9b4742a887c20385f1d78, type: 3}
+  powerUpProp: {fileID: 3553982665673073277, guid: 71c3748855f1ce24f8f51c81758521a5, type: 3}
+  lifeTime: 30
