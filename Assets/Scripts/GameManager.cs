@@ -14,6 +14,8 @@ public class GameManager : IPersistentSingleton<GameManager>
 
     private UIController _currentUIController;
 
+    private ShowInterstitial _adController;
+
     protected override void Awake()
     {
         base.Awake();
@@ -36,6 +38,8 @@ public class GameManager : IPersistentSingleton<GameManager>
         int spawn = Random.Range(0, spawnpoints.Length);
         player.transform.position = spawnpoints[spawn].transform.position;
         Debug.Log("Player nasceu no spawn " + spawn);
+
+        this._adController = new GameObject(typeof(ShowInterstitial).Name).AddComponent<ShowInterstitial>();
     }
 
     public LibrasSign GetRandomLibrasLetterSign()
@@ -122,5 +126,20 @@ public class GameManager : IPersistentSingleton<GameManager>
         Debug.Log("Player morreu");
         GameObject.Find("Canvas").GetComponent<UIController>().ActivateGameOver();
         playerCtrl.SetIsActive(false);
+    }
+
+    private bool _hasUnlockedDic = false;
+
+    public bool HasUnlockedDic { get { return this._hasUnlockedDic; } }
+
+    public void UnlockDictionary()
+    {
+        this._hasUnlockedDic = true;
+        this._currentUIController.OnDictionaryButtonPress();
+    }
+
+    public void WatchAd()
+    {
+        this._adController.ShowRewardedAd();
     }
 }

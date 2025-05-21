@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 61cd9b735c9c63948affde81aca0a40d, type: 3}
-  m_Name: LibrasSignPalavra5
+  m_Name: LibrasSignH
   m_EditorClassIdentifier: 
-  _signText: Cinco
-  _signSprite: {fileID: 21300000, guid: 1d8fa9c1e8a578e4b954379d941abf81, type: 3}
+  _signText: H
+  _signSprite: {fileID: 21300000, guid: ccf84222f85100b4e9ed3dca9ad03e93, type: 3}

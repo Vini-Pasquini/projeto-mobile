@@ -58,8 +58,7 @@ public class QuestionPuzzleController : MonoBehaviour
         this._signOptions[answIndex] = this._signAnswer;
         this._answerSignImage.sprite = this._optionSignImages[answIndex].sprite = this._signAnswer.SignSprite;
 
-        this._questionText.text = $"Libra para {this._signAnswer.SignText}";
-        this._questionText.transform.parent.GetComponent<Image>().color = new Color(0f, .25f, 1f, .5f); ; // PH DEBUG
+        this._questionText.text = $"<b><size=140>{this._signAnswer.OriginGod}</size></b>\n{this._signAnswer.Extra} <i>{this._signAnswer.SignText}</i>";
     }
 
     public void StartLibrasPuzzle(LibrasSign answer, QuestionPuzzleMode mode)
@@ -88,14 +87,12 @@ public class QuestionPuzzleController : MonoBehaviour
     {
         if (this._signOptions[optIndex] == this._signAnswer)
         {
-            this._questionText.text = $"CORRETO! O Sinal para {this._signAnswer.SignText} é";
-            this._questionText.transform.parent.GetComponent<Image>().color = new Color(0f, 1f, 0f, .5f); // PH DEBUG
+            this._questionText.text = $"<b>ACERTOU</b>\nO sinal é";
             this._puzzlePassFlag = true;
         }
         else
         {
-            this._questionText.text = $"INCORRETO! O Sinal para {this._signAnswer.SignText} era:";
-            this._questionText.transform.parent.GetComponent<Image>().color = new Color(1f, 0f, 0f, .5f); // PH DEBUG
+            this._questionText.text = $"<b>ERROU</b>\nO sinal é";
             this._puzzlePassFlag = false;
         }
 

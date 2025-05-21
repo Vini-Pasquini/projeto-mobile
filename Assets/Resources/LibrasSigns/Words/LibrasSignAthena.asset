@@ -10,7 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 61cd9b735c9c63948affde81aca0a40d, type: 3}
-  m_Name: LibrasSignPalavra7
+  m_Name: LibrasSignAthena
   m_EditorClassIdentifier: 
-  _signText: Sees
-  _signSprite: {fileID: 21300000, guid: d87a068672b07fe489251cc744a0e7d1, type: 3}
+  _signText: "Estrat\xE9gia"
+  _signSprite: {fileID: 21300000, guid: c8bb3aed19de3204bb4d19b58e4064b7, type: 3}
+  _originGod: athena
+  _extra: Deusa da

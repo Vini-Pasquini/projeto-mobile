@@ -160,7 +160,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      TainaRun_0: 7722379912170795070
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -274,4 +274,26 @@ public class UIController : MonoBehaviour
             (this._draggableCards[i] as Card).CardObject.transform.GetChild(1).gameObject.SetActive(this._showCardSigns); // libras Sign
         }
     }
+
+    [SerializeField] private GameObject _dictionaryPanel;
+    [SerializeField] private GameObject _adSuggestionPanel;
+
+    public void OnDictionaryButtonPress()
+    {
+        bool flag = GameManager.Instance.HasUnlockedDic;
+
+        this._dictionaryPanel.SetActive(flag);
+        this._adSuggestionPanel.SetActive(!flag);
+    }
+
+    public void OnCloseDictionaryButtonPress()
+    {
+        this._dictionaryPanel.SetActive(false);
+        this._adSuggestionPanel.SetActive(false);
+    }
+
+    public void OnWatchDictionaryAdButtonPress()
+    {
+        GameManager.Instance.WatchAd();
+    }
 }
