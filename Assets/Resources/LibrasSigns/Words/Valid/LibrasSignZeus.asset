@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _signText: Raios
   _signSprite: {fileID: 21300000, guid: e53e8d71efd76a44a936ff23f426b18d, type: 3}
+  _disctionaryWord: Raio
   _originGod: zeus
   _extra: Deus dos

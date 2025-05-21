@@ -63,8 +63,6 @@ public class QuestionPuzzleController : MonoBehaviour
 
     public void StartLibrasPuzzle(LibrasSign answer, QuestionPuzzleMode mode)
     {
-        Debug.Log(mode.ToString());
-
         if (this._questionPuzzlePanel.activeSelf || mode == QuestionPuzzleMode.None) return;
 
         this._signAnswer = answer;
@@ -85,14 +83,20 @@ public class QuestionPuzzleController : MonoBehaviour
 
     public void OnOptionButtonPress(int optIndex)
     {
+        if (this._currentQuestionPuzzleMode == QuestionPuzzleMode.BossFight)
+        {
+            this.OnClosePuzzleButtonPress();
+            return;
+        }
+
         if (this._signOptions[optIndex] == this._signAnswer)
         {
-            this._questionText.text = $"<b>ACERTOU</b>\nO sinal é";
+            this._questionText.text = "<b>ACERTOU</b>\nO sinal é";
             this._puzzlePassFlag = true;
         }
         else
         {
-            this._questionText.text = $"<b>ERROU</b>\nO sinal é";
+            this._questionText.text = "<b>ERROU</b>\nO sinal é";
             this._puzzlePassFlag = false;
         }
 
