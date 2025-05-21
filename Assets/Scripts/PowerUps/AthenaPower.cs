@@ -6,7 +6,7 @@ public class AthenaPower : PowerUpProp
 
     private void Start()
     {
-        this._uiController = GetComponent<UIController>();
+        this._uiController = GameObject.Find("Canvas").GetComponent<UIController>();
         this._uiController.ToggleCardSigns(true);
     }
 

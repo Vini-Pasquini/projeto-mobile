@@ -214,6 +214,12 @@ public class UIController : MonoBehaviour
         this._newCardHandBuffer.Add(newLibrasSign);
 
         GameObject newCardSlot = Instantiate(this._cardSlotPrefab, this._cardSlotPanel);
+
+        Transform card = newCardSlot.transform.GetChild(0);
+
+        card.GetChild(0).gameObject.SetActive(!this._showCardSigns); // libras Text
+        card.GetChild(1).gameObject.SetActive(this._showCardSigns); // libras Sign
+
         Card newCard = new Card(newCardSlot, newLibrasSign);
         this._draggableCards.Add(newCard);
     }
@@ -256,8 +262,16 @@ public class UIController : MonoBehaviour
         GameManager.Instance.UsePowerUp();
     }
 
+    private bool _showCardSigns = false;
+
     public void ToggleCardSigns(bool active)
     {
-        Debug.Log(active);
+        this._showCardSigns = active;
+
+        for (int i = 0; i < this._draggableCards.Count; i++)
+        {
+            (this._draggableCards[i] as Card).CardObject.transform.GetChild(0).gameObject.SetActive(!this._showCardSigns); // libras Text
+            (this._draggableCards[i] as Card).CardObject.transform.GetChild(1).gameObject.SetActive(this._showCardSigns); // libras Sign
+        }
     }
 }
