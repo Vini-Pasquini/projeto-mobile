@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
@@ -12,6 +13,8 @@ public class UIController : MonoBehaviour
     [SerializeField] private GameObject tutorialPanel;
     [SerializeField] private GameObject gameOverPanel;
     //[SerializeField] private GameObject vignette;
+    [SerializeField] private GameObject _libraBoxPrefab;
+    [SerializeField] private GameObject _dictionaryLetterPanel;
 
     private List<IDraggable> _draggableCards = new List<IDraggable>();
 
@@ -32,6 +35,23 @@ public class UIController : MonoBehaviour
         tutorialPanel.SetActive(true);
         gameOverPanel.SetActive(false);
         this.DrawFullCardHand();
+
+        /* Dictionary Init */
+        LibrasSign[] librasLetters = GameManager.Instance.LibrasLetterSigns;
+        LibrasSign[] librasWords = GameManager.Instance.LibrasWordSigns;
+        for (int i = 0; i < librasLetters.Length; i++)
+        {
+            GameObject newBox = GameObject.Instantiate(this._libraBoxPrefab, this._dictionaryLetterPanel.transform, false);
+            newBox.transform.GetChild(0).GetComponent<Image>().sprite = librasLetters[i].SignSprite;
+            newBox.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = librasLetters[i].SignText;
+        }
+
+        for (int i = 0; i < librasWords.Length; i++)
+        {
+            GameObject newBox = GameObject.Instantiate(this._libraBoxPrefab, this._dictionaryLetterPanel.transform, false);
+            newBox.transform.GetChild(0).GetComponent<Image>().sprite = librasWords[i].SignSprite;
+            newBox.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = $"<size=45>{librasWords[i].DictionaryWord}</size>";
+        }
     }
 
     private void Update()
@@ -45,23 +65,23 @@ public class UIController : MonoBehaviour
             if (this._countDown <= 0f) this._powerUpTimer = 0f;
         }
 
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            Debug.Log("GET KEY");
-            GameManager.Instance.CallBossPuzzle();
-        }
+        //if (Input.GetKeyDown(KeyCode.Space))
+        //{
+        //    Debug.Log("GET KEY");
+        //    GameManager.Instance.CallBossPuzzle();
+        //}
     }
 
     // Buttons
 
     public void PlayGame()
     {
-        SceneManager.LoadScene("TestChar");
+        SceneManager.LoadScene("Game");
     }
 
     public void TestCards()
     {
-        SceneManager.LoadScene("TestFullUI");
+        SceneManager.LoadScene("TestPuzzleLibrasTop");
     }
 
     public void CloseTutorial()
@@ -241,9 +261,10 @@ public class UIController : MonoBehaviour
         this._questionPuzzleController.StartLibrasPuzzle(GameManager.Instance.ChestController.PuzzleSolution, QuestionPuzzleMode.PowerUpChest);
     }
 
-    [SerializeField] private Image _powerUpButtonIcon;
+    [SerializeField] private Button _powerUpButton;
+    [SerializeField] private Image _powerUpIcon;
     [SerializeField] private Image _powerUpTimerImage;
-    [SerializeField] private Sprite _defaultButtonNegocioPlaceholder;
+    [SerializeField] private Sprite _defaultSprite;
 
     private float _powerUpTimer = 0f;
     private float _countDown = 0f;
@@ -252,9 +273,11 @@ public class UIController : MonoBehaviour
     {
         this._powerUpTimer = this._countDown = timer;
         PowerUp powerUp = GameManager.Instance.PowerUpSlot;
-        this._powerUpButtonIcon.sprite = powerUp == null ? this._defaultButtonNegocioPlaceholder : powerUp.powerUpIcon;
-        //if (powerUp == null) return;
-        //this._powerUpButtonIcon.sprite = powerUp.powerUpIcon;
+
+        this._powerUpButton.interactable = powerUp != null;
+        this._powerUpIcon.gameObject.SetActive(powerUp != null);
+
+        this._powerUpIcon.sprite = powerUp == null ? this._defaultSprite : powerUp.powerUpIcon;
     }
 
     public void OnPowerUpButtonPress()
@@ -290,6 +313,8 @@ public class UIController : MonoBehaviour
     {
         this._dictionaryPanel.SetActive(false);
         this._adSuggestionPanel.SetActive(false);
+
+        GameManager.Instance.LockDictionary();
     }
 
     public void OnWatchDictionaryAdButtonPress()

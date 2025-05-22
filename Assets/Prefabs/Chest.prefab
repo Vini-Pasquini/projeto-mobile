@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7606955713733579430}
   - component: {fileID: 2974689928591953884}
   - component: {fileID: 4047849355166979656}
+  - component: {fileID: 5378413963524767836}
   m_Layer: 9
   m_Name: Chest
   m_TagString: Chest
@@ -80,7 +81,7 @@ SpriteRenderer:
   m_SortingLayerID: -1580694999
   m_SortingLayer: 1
   m_SortingOrder: 10
-  m_Sprite: {fileID: -5281422124547630143, guid: a28da6bd2c192f948972b1bb490c0d0c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: cc97914b41f6ab840a58978e7dee394b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -156,7 +157,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 2, y: 2}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -176,7 +177,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7496bb2c3f39a542bce6e161d71568f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _puzzleSolution: {fileID: 0}
+  _powerUpReward: {fileID: 0}
   open: {fileID: -301325780, guid: a28da6bd2c192f948972b1bb490c0d0c, type: 3}
+--- !u!95 &5378413963524767836
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3273904878328624753}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 0631496889727e54995b65fd7fd469d3, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &8787946339765306079
 GameObject:
   m_ObjectHideFlags: 0

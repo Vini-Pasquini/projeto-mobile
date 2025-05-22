@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: AthenaPowerUp
   m_EditorClassIdentifier: 
   powerUpName: Athena Power
-  powerUpIcon: {fileID: 21300000, guid: 195cab2531fefc14f8bea432cd53a71e, type: 3}
+  powerUpIcon: {fileID: 21300000, guid: 568201e8571d7cd4c9fc15cd0e29a932, type: 3}
   powerUpProp: {fileID: 5538511307498832534, guid: 0dd45203d5ff705409f055898b53c76d, type: 3}
   lifeTime: 5

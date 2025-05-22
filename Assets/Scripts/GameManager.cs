@@ -5,6 +5,11 @@ public class GameManager : IPersistentSingleton<GameManager>
 {
     private LibrasSign[] _librasLetterSigns;
     private LibrasSign[] _librasWordSigns;
+    private LibrasSign[] _librasFakeWords;
+
+    public LibrasSign[] LibrasLetterSigns { get { return this._librasLetterSigns; } }
+    public LibrasSign[] LibrasWordSigns { get { return this._librasWordSigns; } }
+    public LibrasSign[] LibrasFakeWords { get { return this._librasFakeWords; } }
 
     [SerializeField] private GameObject[] spawnpoints;
 
@@ -21,7 +26,8 @@ public class GameManager : IPersistentSingleton<GameManager>
         base.Awake();
 
         this._librasLetterSigns = Resources.LoadAll<LibrasSign>("LibrasSigns/Letters");
-        this._librasWordSigns = Resources.LoadAll<LibrasSign>("LibrasSigns/Words");
+        this._librasWordSigns = Resources.LoadAll<LibrasSign>("LibrasSigns/Words/Valid");
+        this._librasFakeWords = Resources.LoadAll<LibrasSign>("LibrasSigns/Words/Fake");
 
         player = GameObject.FindWithTag("Player");
         playerCtrl = player.GetComponent<PlayerController>();
@@ -47,9 +53,15 @@ public class GameManager : IPersistentSingleton<GameManager>
         return this._librasLetterSigns[Random.Range(0, this._librasLetterSigns.Length)];
     }
 
-    public LibrasSign GetRandomLibrasWordSign()
+    public LibrasSign GetRandomLibrasWordSign(bool forceValid = false)
     {
-        return this._librasWordSigns[Random.Range(0, this._librasWordSigns.Length)];
+        LibrasSign validLibras = this._librasWordSigns[Random.Range(0, this._librasWordSigns.Length)];
+
+        if (forceValid) return validLibras;
+
+        LibrasSign fakeLibras = this._librasFakeWords[Random.Range(0, this._librasFakeWords.Length)];
+
+        return Random.Range(0f, 100f) < 50f ? validLibras : fakeLibras;
     }
 
     public void EnterBossRoom()
@@ -61,7 +73,7 @@ public class GameManager : IPersistentSingleton<GameManager>
 
     private GameObject _chestInRange = null;
     public GameObject ChestInRange { get { return this._chestInRange; } }
-    
+
     private ChestController _chestController = null;
     public ChestController ChestController
     {
@@ -116,9 +128,26 @@ public class GameManager : IPersistentSingleton<GameManager>
 
         if (this._currentUIController.QuestionPuzzleController == null) return;
 
-        LibrasSign answerWord = setAnswer != null ? setAnswer : this.GetRandomLibrasWordSign();
+        LibrasSign answerWord = setAnswer != null ? setAnswer : this.GetRandomLibrasWordSign(true);
 
         this._currentUIController.QuestionPuzzleController.StartLibrasPuzzle(answerWord, QuestionPuzzleMode.BossFight);
+    }
+
+    int puzzleAnswer = -1;
+
+    public int GetPuzzleAnswer
+    {
+        get
+        {
+            int answer = puzzleAnswer;
+            puzzleAnswer = -1;
+            return answer;
+        }
+    }
+
+    public void PuzzleAnswer(bool answer)
+    {
+        puzzleAnswer = answer ? 1 : 0;
     }
 
     public void PlayerDeath()
@@ -136,6 +165,11 @@ public class GameManager : IPersistentSingleton<GameManager>
     {
         this._hasUnlockedDic = true;
         this._currentUIController.OnDictionaryButtonPress();
+    }
+
+    public void LockDictionary()
+    {
+        this._hasUnlockedDic = false;
     }
 
     public void WatchAd()
