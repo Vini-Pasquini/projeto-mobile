@@ -110,7 +110,7 @@ public class QuestionPuzzleController : MonoBehaviour
         switch (this._currentQuestionPuzzleMode)
         {
             case QuestionPuzzleMode.PowerUpChest: GameManager.Instance.ChestController.DisableChestPuzzle(passFlag); break;
-            case QuestionPuzzleMode.BossFight: /**/ break;
+            case QuestionPuzzleMode.BossFight: GameManager.Instance.PuzzleAnswer(_puzzlePassFlag); break;
             default: break;
         }
         this._currentQuestionPuzzleMode = QuestionPuzzleMode.None;

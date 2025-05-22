@@ -10,17 +10,15 @@ public partial class AttackNearAction : Action
 {
     [SerializeReference] public BlackboardVariable<GameObject> Agent;
     [SerializeReference] public BlackboardVariable<PlayerController> Target;
-    GameObject player;
 
     protected override Status OnStart()
     {
-        player = GameObject.FindWithTag("Player");
         return Status.Running;
     }
 
     protected override Status OnUpdate()
     {
-        player.GetComponent<PlayerController>().TakeHit();
+        Target.Value.GetComponent<PlayerController>().TakeHit();
         return Status.Success;
     }
 
