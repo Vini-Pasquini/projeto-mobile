@@ -853,8 +853,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Jogar
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 766de61101f165e49a1271198f45468b, type: 2}
-  m_sharedMaterial: {fileID: 2444988994437446439, guid: 766de61101f165e49a1271198f45468b, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: ce6aa7e0707576f4da6b1ca76579d695, type: 2}
+  m_sharedMaterial: {fileID: -8621797884067827013, guid: ce6aa7e0707576f4da6b1ca76579d695, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

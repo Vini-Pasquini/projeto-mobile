@@ -1,0 +1,1 @@
+D:\Yara\GitHub\projeto-mobile\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\build\intermediates\cxx\RelWithDebInfo\f3f19245\obj\arm64-v8a

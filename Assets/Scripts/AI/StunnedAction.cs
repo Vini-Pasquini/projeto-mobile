@@ -28,7 +28,7 @@ public partial class StunnedAction : Action
     protected override Status OnUpdate()
     {
         int puzzleResult = GameManager.Instance.GetPuzzleAnswer;
-        Debug.Log(puzzleResult);
+        //Debug.Log(puzzleResult);
 
         if (puzzleResult < 0)
         {

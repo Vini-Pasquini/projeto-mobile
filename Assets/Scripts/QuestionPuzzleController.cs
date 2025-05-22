@@ -64,6 +64,7 @@ public class QuestionPuzzleController : MonoBehaviour
     public void StartLibrasPuzzle(LibrasSign answer, QuestionPuzzleMode mode)
     {
         if (this._questionPuzzlePanel.activeSelf || mode == QuestionPuzzleMode.None) return;
+        GameManager.Instance.TogglePlayerCtrl(false);
 
         this._signAnswer = answer;
         this._currentQuestionPuzzleMode = mode;
@@ -83,12 +84,6 @@ public class QuestionPuzzleController : MonoBehaviour
 
     public void OnOptionButtonPress(int optIndex)
     {
-        if (this._currentQuestionPuzzleMode == QuestionPuzzleMode.BossFight)
-        {
-            this.OnClosePuzzleButtonPress();
-            return;
-        }
-
         if (this._signOptions[optIndex] == this._signAnswer)
         {
             this._questionText.text = "<b>ACERTOU</b>\nO sinal é";
@@ -100,12 +95,19 @@ public class QuestionPuzzleController : MonoBehaviour
             this._puzzlePassFlag = false;
         }
 
+        if (this._currentQuestionPuzzleMode == QuestionPuzzleMode.BossFight)
+        {
+            this.OnClosePuzzleButtonPress();
+            return;
+        }
+
         this._questionAnswerPanel.SetActive(true);
         this._questionOptionsPanel.SetActive(false);
     }
 
     public void OnClosePuzzleButtonPress()
     {
+        GameManager.Instance.TogglePlayerCtrl(true);
         bool passFlag = EndPuzzle();
         switch (this._currentQuestionPuzzleMode)
         {

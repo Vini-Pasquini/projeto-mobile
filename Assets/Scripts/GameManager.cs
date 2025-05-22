@@ -64,6 +64,11 @@ public class GameManager : IPersistentSingleton<GameManager>
         return Random.Range(0f, 100f) < 50f ? validLibras : fakeLibras;
     }
 
+    public void TogglePlayerCtrl(bool active)
+    {
+        player.GetComponent<PlayerController>().SetIsActive(active);
+    }
+
     public void EnterBossRoom()
     {
         Debug.Log("Encontrou o Minotauro");

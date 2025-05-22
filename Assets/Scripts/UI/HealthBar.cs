@@ -9,7 +9,7 @@ public class HealthBar : MonoBehaviour
     [SerializeField] private Sprite health3;
     private Image img;
 
-    private void Start()
+    private void Awake()
     {
         img = GetComponent<Image>();
         img.sprite = health3;

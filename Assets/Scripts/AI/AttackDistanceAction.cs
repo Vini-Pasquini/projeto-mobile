@@ -56,6 +56,7 @@ public partial class AttackDistanceAction : Action
     protected override void OnEnd()
     {
         myAnimator.SetBool("PrepareCharge", false);
+        myAnimator.SetBool("ChargeLeft", false);
         //myAnimator.SetBool("Charge", false);
     }
 
@@ -68,8 +69,8 @@ public partial class AttackDistanceAction : Action
     {
         Debug.Log("initialize do charge");
         myAnimator = Agent.Value.GetComponentInChildren<Animator>();
-        myAnimator.SetBool("Charge", true);
         targetPos = Target.Value.transform.position;
+        myAnimator.SetBool("Charge", true);
 
         return Status.Running;
     }

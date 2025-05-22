@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: HermesPowerUp
   m_EditorClassIdentifier: 
   powerUpName: Hermes Power
-  powerUpIcon: {fileID: 21300000, guid: 27ab395dd0795d14090f4581e7cbcef5, type: 3}
+  powerUpIcon: {fileID: 21300000, guid: e4e1a625a469bcf4ebb0e7a0437168ac, type: 3}
   powerUpProp: {fileID: 720494904496985354, guid: 53b3852722164024583a8158d7680440, type: 3}
-  lifeTime: 10
+  lifeTime: 15
