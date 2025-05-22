@@ -65,18 +65,18 @@ public class UIController : MonoBehaviour
             if (this._countDown <= 0f) this._powerUpTimer = 0f;
         }
 
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            Debug.Log("GET KEY");
-            GameManager.Instance.CallBossPuzzle();
-        }
+        //if (Input.GetKeyDown(KeyCode.Space))
+        //{
+        //    Debug.Log("GET KEY");
+        //    GameManager.Instance.CallBossPuzzle();
+        //}
     }
 
     // Buttons
 
     public void PlayGame()
     {
-        SceneManager.LoadScene("TestChar");
+        SceneManager.LoadScene("Game");
     }
 
     public void TestCards()
