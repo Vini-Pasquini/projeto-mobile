@@ -61,7 +61,7 @@ public class GameManager : IPersistentSingleton<GameManager>
 
     private GameObject _chestInRange = null;
     public GameObject ChestInRange { get { return this._chestInRange; } }
-    
+
     private ChestController _chestController = null;
     public ChestController ChestController
     {
@@ -119,6 +119,23 @@ public class GameManager : IPersistentSingleton<GameManager>
         LibrasSign answerWord = setAnswer != null ? setAnswer : this.GetRandomLibrasWordSign();
 
         this._currentUIController.QuestionPuzzleController.StartLibrasPuzzle(answerWord, QuestionPuzzleMode.BossFight);
+    }
+
+    int puzzleAnswer = -1;
+
+    public int GetPuzzleAnswer
+    {
+        get
+        {
+            int answer = puzzleAnswer;
+            puzzleAnswer = -1;
+            return answer;
+        }
+    }
+
+    public void PuzzleAnswer(bool answer)
+    {
+        puzzleAnswer = answer ? 1 : 0;
     }
 
     public void PlayerDeath()

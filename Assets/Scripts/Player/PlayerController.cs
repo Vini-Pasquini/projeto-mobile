@@ -26,9 +26,37 @@ public class PlayerController : MonoBehaviour
     {
         if (isActive)
         {
+            myAnimator.SetBool("WalkDown", false);
+            myAnimator.SetBool("WalkUp", false);
+            myAnimator.SetBool("WalkRight", false);
+            myAnimator.SetBool("WalkLeft", false);
+
             if (joystick.joystickVec.y != 0)
             {
                 rb.linearVelocity = new Vector2(joystick.joystickVec.x, joystick.joystickVec.y) * speed * speedMultiplier;
+
+                if (Mathf.Abs(joystick.joystickVec.x) > Mathf.Abs(joystick.joystickVec.y))
+                {
+                    if (joystick.joystickVec.x < 0)
+                    {
+                        myAnimator.SetBool("WalkLeft", true);
+                    }
+                    else if (joystick.joystickVec.x > 0)
+                    {
+                        myAnimator.SetBool("WalkRight", true);
+                    }
+                }
+                else
+                {
+                    if (joystick.joystickVec.y < 0)
+                    {
+                        myAnimator.SetBool("WalkDown", true);
+                    }
+                    else if (joystick.joystickVec.y > 0)
+                    {
+                        myAnimator.SetBool("WalkUp", true);
+                    }
+                }
             }
             else
             {
@@ -41,22 +69,29 @@ public class PlayerController : MonoBehaviour
             {
                 rb.linearVelocity = moveDirection * speed;
 
-                myAnimator.SetBool("WalkDown", true);
 
-                if (moveDirection.y < 0)
+                if (Mathf.Abs(moveDirection.x) > Mathf.Abs(moveDirection.y))
                 {
-                    myAnimator.SetBool("WalkUp", false);
+                    if (moveDirection.x < 0)
+                    {
+                        myAnimator.SetBool("WalkLeft", true);
+                    }
+                    else if (moveDirection.x > 0)
+                    {
+                        myAnimator.SetBool("WalkRight", true);
+                    }
                 }
-                else if (moveDirection.y > 0)
+                else
                 {
-                    myAnimator.SetBool("WalkDown", false);
-                    myAnimator.SetBool("WalkUp", true);
+                    if (moveDirection.y < 0)
+                    {
+                        myAnimator.SetBool("WalkDown", true);
+                    }
+                    else if (moveDirection.y > 0)
+                    {
+                        myAnimator.SetBool("WalkUp", true);
+                    }
                 }
-            }
-            else
-            {
-                myAnimator.SetBool("WalkDown", false);
-                myAnimator.SetBool("WalkUp", false);
             }
         }
         else
@@ -65,6 +100,11 @@ public class PlayerController : MonoBehaviour
             myAnimator.SetBool("WalkDown", false);
             myAnimator.SetBool("WalkUp", false);
         }
+    }
+
+    public int GetHealth()
+    {
+        return health;
     }
 
     public void TakeHit()
