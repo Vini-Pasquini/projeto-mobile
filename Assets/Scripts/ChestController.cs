@@ -27,12 +27,9 @@ public class ChestController : MonoBehaviour
     public void DisableChestPuzzle(bool succeeded)
     {
         this._solved = true;
-        this.GetComponent<SpriteRenderer>().sprite = open; // PH
+        this.GetComponent<Animator>().Play("OpenChest");
         GameManager.Instance.UnregisterChestInRange(this.gameObject);
 
         if (succeeded) { GameManager.Instance.SetPowerUpSlot(this._powerUpReward); }
     }
-
-
-    [SerializeField] private Sprite open; // PH
 }

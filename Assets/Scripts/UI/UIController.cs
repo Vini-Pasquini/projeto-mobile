@@ -81,7 +81,7 @@ public class UIController : MonoBehaviour
 
     public void TestCards()
     {
-        SceneManager.LoadScene("TestFullUI");
+        SceneManager.LoadScene("TestPuzzleLibrasTop");
     }
 
     public void CloseTutorial()
